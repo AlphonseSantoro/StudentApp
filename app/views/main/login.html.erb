@@ -1,0 +1,20 @@
+<h1>Logg in</h1>
+
+<p id="notice"><%= notice %></p>
+
+<%= form_for(:signin) do |f| %>
+
+    <div class="field">
+        <%= f.label :Epost %><br>
+        <%= f.text_field :email, required: true %>
+    </div>
+    <div class="field">
+        <%= f.label :passord %><br>
+        <%= f.password_field :password, required: true %>
+    </div>
+    <div class="actions">
+        <%= f.submit :'Logg in' %>
+    </div>
+    <%= link_to 'Registrer', '/users/new' %>
+
+  <% end %>
