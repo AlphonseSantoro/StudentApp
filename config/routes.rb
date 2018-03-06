@@ -2,9 +2,9 @@ Rails.application.routes.draw do
   resources :uploads
   get 'main/hovedside'
 
-  get 'main/profil'
+  get '/profil', to: 'main#profil'
   
-  get '/main/login'
+  get '/login', to: 'main#login'
 
   post '/main/login', to: 'main#signin'
   

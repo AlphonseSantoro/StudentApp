@@ -4,6 +4,9 @@ class MainController < UsersController
   end
 
   def profil
+    unless session[:signedin]
+      redirect_to '/main/login'
+    end
   end
 
   def login
@@ -19,6 +22,7 @@ class MainController < UsersController
       @password = User.hash_password(@password, @salt)
       validate = User.validate_password(@password_hash, @password)
       if validate
+        session[:signedin] = true
         redirect_to '/main/profil'
       else
         redirect_to '/main/login', notice: 'Feil passord'
@@ -29,5 +33,7 @@ class MainController < UsersController
   end
 
   def logout
+    session[:signedin] = false
+    redirect_to '/main/login'
   end
 end
