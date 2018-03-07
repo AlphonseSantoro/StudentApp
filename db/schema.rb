@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180306122232) do
+ActiveRecord::Schema.define(version: 20180306200319) do
 
   create_table "binaries", force: :cascade do |t|
     t.binary   "data",       limit: 4294967295
@@ -26,6 +26,7 @@ ActiveRecord::Schema.define(version: 20180306122232) do
     t.string   "binary_id",  limit: 255
     t.datetime "created_at",             null: false
     t.datetime "updated_at",             null: false
+    t.integer  "users_id",   limit: 4
   end
 
   create_table "users", force: :cascade do |t|

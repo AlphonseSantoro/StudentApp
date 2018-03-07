@@ -1,5 +1,6 @@
 class UploadsController < ApplicationController
   before_action :set_upload, only: [:show, :edit, :update, :destroy]
+  #scope :user_files, where(id: session[:id])
 
   # GET /uploads
   # GET /uploads.json
@@ -24,7 +25,7 @@ class UploadsController < ApplicationController
   # POST /uploads
   # POST /uploads.json
   def create
-    @upload = Upload.upload(params)
+    @upload = Upload.upload(params, session[:id])
     redirect_to '/uploads', notice: 'File uploaded.'
   end
 

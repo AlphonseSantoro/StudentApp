@@ -5,11 +5,15 @@ class MainController < UsersController
 
   def profil
     unless session[:signedin]
-      redirect_to '/main/login'
+      redirect_to '/login'
     end
   end
 
   def login
+  end
+
+  def notat
+    @upload = Upload.where(users_id: session[:id])
   end
 
   def signin
@@ -23,17 +27,22 @@ class MainController < UsersController
       validate = User.validate_password(@password_hash, @password)
       if validate
         session[:signedin] = true
-        redirect_to '/main/profil'
+        session[:id] = @user[:id]
+        redirect_to '/profil'
       else
-        redirect_to '/main/login', notice: 'Feil passord'
+        redirect_to '/login', notice: 'Feil passord'
       end
     else
-      redirect_to '/main/login', notice: "Fant ingen bruker med email: #{ @email }"
+      redirect_to '/login', notice: "Fant ingen bruker med email: #{ @email }"
     end    
   end
 
   def logout
     session[:signedin] = false
-    redirect_to '/main/login'
+    redirect_to '/login'
+  end
+
+  def self.session_id
+    session[:id]
   end
 end

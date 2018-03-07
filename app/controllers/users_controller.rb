@@ -29,7 +29,7 @@ class UsersController < ApplicationController
       redirect_to '/users/new', notice: "Passordene er ikke like"
     else
     User.new_user(user_params)
-    redirect_to '/main/login'
+    redirect_to '/login'
     end
   end
 

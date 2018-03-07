@@ -6,8 +6,10 @@ Rails.application.routes.draw do
   
   get '/login', to: 'main#login'
 
-  post '/main/login', to: 'main#signin'
+  post '/login', to: 'main#signin'
   
+  get '/notat', to: 'main#notat'
+
   get '/logout', to: 'main#logout'
 
   resources :users
