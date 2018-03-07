@@ -12,6 +12,8 @@ Rails.application.routes.draw do
 
   get '/logout', to: 'main#logout'
 
+  get '/document', to: 'main#document'
+
   resources :users
 
   root 'main#profil'

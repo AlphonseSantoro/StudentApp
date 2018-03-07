@@ -16,6 +16,17 @@ class MainController < UsersController
     @upload = Upload.where(users_id: session[:id])
   end
 
+  def document
+    @document = Upload.find(params[:format])
+    image
+  end
+
+  def image
+    @file = Binary.find(@document[:binary_id])
+    @data = @file[:data]
+    send_data @data, type: 'image/png', disposition: 'inline'
+  end
+
   def signin
     @email = params[:signin][:email]
     @password = params[:signin][:password]
