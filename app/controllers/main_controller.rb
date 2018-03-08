@@ -46,7 +46,7 @@ class MainController < UsersController
       if validate
         session[:signedin] = true
         session[:id] = @user[:id]
-        redirect_to '/profil'
+        redirect_to '/hovedside'
       else
         redirect_to '/login', notice: 'Feil passord'
       end

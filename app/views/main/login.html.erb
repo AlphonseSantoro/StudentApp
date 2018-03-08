@@ -1,22 +1,24 @@
-<h1>Logg in</h1>
-
-<p id="notice"><%= notice %></p>
-
-<%= form_for(:signin, html: {class: 'form' }) do |f| %>
-<div class="form">
-    <div class="form-group">
-        <%= f.label :Epost %><br>
-        <%= f.text_field :email, required: true %>
+<!-- Main Content -->
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 col-md-10 mx-auto">
+          <p id="notice"><%= notice %></p>
+            <%= form_for(:signin) do |f| %>
+                <div class="form-group">
+                    <%= f.label :Epost %><br>
+                    <%= f.text_field :email, required: true %>
+                </div>
+                <div class="form-group">
+                    <%= f.label :passord %><br>
+                    <%= f.password_field :password, required: true %>
+                </div>
+                <div class="btn">
+                    <%= f.submit :'Logg in' %>
+                </div>
+                <div class="btn">
+                <%= link_to 'Registrer', '/users/new' %>
+                </div>
+            <% end %>
+        </div>
+      </div>
     </div>
-    <div class="form-group">
-        <%= f.label :passord %><br>
-        <%= f.password_field :password, required: true %>
-    </div>
-    <div class="btn btn-success">
-        <%= f.submit :'Logg in' %>
-    </div>
-    <div class="btn btn-success">
-    <%= link_to 'Registrer', '/users/new' %>
-    </div>
-</div>
-<% end %>
