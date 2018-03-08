@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180306200319) do
+ActiveRecord::Schema.define(version: 20180308140233) do
 
   create_table "binaries", force: :cascade do |t|
     t.binary   "data",       limit: 4294967295
@@ -19,15 +19,27 @@ ActiveRecord::Schema.define(version: 20180306200319) do
     t.datetime "updated_at",                    null: false
   end
 
+  create_table "comments", force: :cascade do |t|
+    t.binary   "text",       limit: 65535
+    t.integer  "upload_id",  limit: 4
+    t.integer  "user_id",    limit: 4
+    t.datetime "created_at",               null: false
+    t.datetime "updated_at",               null: false
+  end
+
+  add_index "comments", ["user_id"], name: "fk_rails_03de2dc08c", using: :btree
+
   create_table "uploads", force: :cascade do |t|
     t.string   "filename",   limit: 255
     t.string   "filetype",   limit: 255
     t.integer  "size",       limit: 4
-    t.string   "binary_id",  limit: 255
-    t.datetime "created_at",             null: false
-    t.datetime "updated_at",             null: false
-    t.integer  "users_id",   limit: 4
+    t.binary   "data",       limit: 4294967295
+    t.integer  "user_id",    limit: 4
+    t.datetime "created_at",                    null: false
+    t.datetime "updated_at",                    null: false
   end
+
+  add_index "uploads", ["user_id"], name: "fk_rails_15d41e668d", using: :btree
 
   create_table "users", force: :cascade do |t|
     t.string   "email",      limit: 255
@@ -37,4 +49,6 @@ ActiveRecord::Schema.define(version: 20180306200319) do
     t.datetime "updated_at",             null: false
   end
 
+  add_foreign_key "comments", "users"
+  add_foreign_key "uploads", "users"
 end

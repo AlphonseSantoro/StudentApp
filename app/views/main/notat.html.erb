@@ -17,7 +17,7 @@
         <td><%= file.filename %></td>
         <td><%= file.filetype %></td>
         <td><%= file.size %></td>
-        <td><%= link_to 'Åpne', document_path(file) %>
+        <td><%= link_to 'Åpne', document_path(file), format: :pdf %>
       </tr>
     <% end %>
   </tbody>

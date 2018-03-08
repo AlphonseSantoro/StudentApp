@@ -5,6 +5,8 @@ class CreateUploads < ActiveRecord::Migration
       t.string :filetype
       t.integer :size
       t.string :binary_id
+      t.integer :users_id
+      t.binary  :data,  limit: 16.megabyte
 
       t.timestamps null: false
     end

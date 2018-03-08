@@ -1,3 +1,16 @@
-<h1><%=  %></h1>
+<h1>Document:</h1>
 
-<%= :data %>
+<%= @document[:data] %>
+
+<p>Comments:</p>
+
+<% @comments.each do |c| %>
+
+    <%= c.text %>
+    <%= c.created_at %> </br>
+    <p>Kommentert av: </p>
+    <%= @username.email %>
+
+<% end %> </br>
+
+<%= link_to 'Tilbake', '/notat' %>

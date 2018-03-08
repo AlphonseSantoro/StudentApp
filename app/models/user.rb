@@ -2,6 +2,7 @@ class User < ActiveRecord::Base
     validates_presence_of :email
     validates_presence_of :password
     has_many :uploads
+    has_many :comments
 
     def self.new_user(user_params)
         password = user_params[:password]

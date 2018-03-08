@@ -23,10 +23,10 @@ class UploadsController < ApplicationController
   end
 
   # POST /uploads
-  # POST /uploads.json
+  # POST /uploads.json 
   def create
     @upload = Upload.upload(params, session[:id])
-    redirect_to '/uploads', notice: 'File uploaded.'
+    redirect_to '/notat', notice: 'File uploaded.'
   end
 
   # PATCH/PUT /uploads/1
@@ -61,6 +61,6 @@ class UploadsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def upload_params
-      params.require(:upload).permit(:filename, :filetype, :size, :binary_id)
+      params.require(:upload).permit(:filename, :filetype, :size, :binary_id, :data)
     end
 end

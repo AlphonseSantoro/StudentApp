@@ -13,18 +13,20 @@ class MainController < UsersController
   end
 
   def notat
-    @upload = Upload.where(users_id: session[:id])
+    @upload = Upload.where(user_id: session[:id])
   end
 
   def document
     @document = Upload.find(params[:format])
-    image
+    @comments = Comment.where(upload_id: params[:format])
+    @firstComment = Comment.where(upload_id: params[:format]).first
+    @username = User.find(@firstComment[:user_id])
   end
 
   def image
     @file = Binary.find(@document[:binary_id])
     @data = @file[:data]
-    send_data @data, type: 'image/png', disposition: 'inline'
+    #send_data @data, type: 'image/png', disposition: 'inline'
   end
 
   def signin

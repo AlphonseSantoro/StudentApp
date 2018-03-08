@@ -1,8 +1,12 @@
 class Upload < ActiveRecord::Base
     belongs_to :binary, dependent: :destroy
+    has_many :comments
 
     def self.upload(params, user_id)
+
+        puts params
         @binary = params[:upload][:file_data]
+        file = params[:upload][:file_data].read
         @filename = @binary.original_filename
         @filetype = @binary.content_type
         @size = @binary.size
@@ -15,8 +19,8 @@ class Upload < ActiveRecord::Base
             filename: @filename,
             filetype: @filetype,
             size: @size,
-            binary_id: @file[:id],
-            users_id: user_id
+            user_id: user_id,
+            data: file
         )
     end
 end
