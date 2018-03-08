@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180308140233) do
+ActiveRecord::Schema.define(version: 20180308172119) do
 
   create_table "binaries", force: :cascade do |t|
     t.binary   "data",       limit: 4294967295
@@ -30,13 +30,14 @@ ActiveRecord::Schema.define(version: 20180308140233) do
   add_index "comments", ["user_id"], name: "fk_rails_03de2dc08c", using: :btree
 
   create_table "uploads", force: :cascade do |t|
-    t.string   "filename",   limit: 255
-    t.string   "filetype",   limit: 255
-    t.integer  "size",       limit: 4
-    t.binary   "data",       limit: 4294967295
-    t.integer  "user_id",    limit: 4
-    t.datetime "created_at",                    null: false
-    t.datetime "updated_at",                    null: false
+    t.string   "filename",    limit: 255
+    t.string   "filetype",    limit: 255
+    t.integer  "size",        limit: 4
+    t.binary   "data",        limit: 4294967295
+    t.integer  "user_id",     limit: 4
+    t.datetime "created_at",                     null: false
+    t.datetime "updated_at",                     null: false
+    t.string   "description", limit: 255
   end
 
   add_index "uploads", ["user_id"], name: "fk_rails_15d41e668d", using: :btree

@@ -11,16 +11,14 @@ class Upload < ActiveRecord::Base
         @filetype = @binary.content_type
         @size = @binary.size
 
-        # Save file to Binary table
-        @file = Binary.create(data: @binary)
-
         # Save file to upload table
         self.create(
             filename: @filename,
             filetype: @filetype,
             size: @size,
             user_id: user_id,
-            data: file
+            data: file,
+            description: params[:upload][:description]
         )
     end
 end

@@ -7,8 +7,24 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-
-<%= yield %>
-
+<% unless request.env['PATH_INFO'] == '/login' %>
+  <nav>
+    <ul>
+      <%= link_to 'Profil', '/profil' %> |
+      <%= link_to 'Notater', '/notat' %> |
+      <%= link_to 'Logg ut', '/logout' %>
+    </ul>
+  </nav>
+<% end %>
+<div id="main-container" class="container">
+      <div class="row">
+        <div id="sidebar" class="col-xs-3">
+          <!-- sidebar content -->
+        </div>
+        <div id="content" class="col-xs-9">
+          <%= yield %>
+        </div>
+      </div>
+    </div>
 </body>
 </html>

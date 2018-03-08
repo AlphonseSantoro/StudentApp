@@ -25,6 +25,11 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 
 gem "paperclip", "~> 5.2.1"
 
+gem 'bootstrap-sass', '~> 3.2.0'
+gem 'autoprefixer-rails'
+
+gem 'sprockets-rails', :require => 'sprockets/railtie'
+
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 

@@ -1,6 +1,7 @@
 class MainController < UsersController
   
   def hovedside
+    @notat = Upload.all
   end
 
   def profil

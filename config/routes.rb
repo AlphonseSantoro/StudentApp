@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   resources :comments
   resources :uploads
-  get 'main/hovedside'
+  get '/hovedside', to: 'main#hovedside'
 
   get '/profil', to: 'main#profil'
   
