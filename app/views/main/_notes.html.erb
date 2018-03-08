@@ -1,6 +1,22 @@
 <% @notat.each do |t| %>
-    <div class="fileInFeed">
-    <%= t.filename %>
-    <%= t.description %>
-    </div>
+    <div class="post-preview">
+            <a href="post.html">
+              <h2 class="post-title">
+                <%= t.filename %>
+              </h2>
+              <h3 class="post-subtitle">
+                <%= t.description %>
+              </h3>
+            </a>
+            <p class="post-meta">Posted by
+              <a href="#"><%= user(t.user_id).email %></a>
+              on <%= note(t.id).created_at %></p>
+          </div>
+          <hr>
 <% end %>
+
+
+          <!-- Pager -->
+          <div class="clearfix">
+            <a class="btn btn-primary float-right" href="#">Older Posts &rarr;</a>
+          </div>
