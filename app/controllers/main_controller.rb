@@ -17,16 +17,20 @@ class MainController < UsersController
   end
 
   def document
+    @comment = Comment.new
     @document = Upload.find(params[:format])
     @comments = Comment.where(upload_id: params[:format])
     @firstComment = Comment.where(upload_id: params[:format]).first
-    @username = User.find(@firstComment[:user_id])
+    if @firstComment != nil
+      @username = User.find(@firstComment[:user_id])
+    else
+      @comments= "Ingen kommentarer"
+    end
   end
 
   def image
     @file = Binary.find(@document[:binary_id])
     @data = @file[:data]
-    #send_data @data, type: 'image/png', disposition: 'inline'
   end
 
   def signin

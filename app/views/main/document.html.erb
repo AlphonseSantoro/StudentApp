@@ -2,15 +2,19 @@
 
 <%= @document[:data] %>
 
+<%= render '/comments/form' %>
+
 <p>Comments:</p>
+    <% if @firstComment != nil%>
+        <% @comments.each do |c| %>
 
-<% @comments.each do |c| %>
+            <%= c.text %>
+            <%= c.created_at %> </br>
+            <p>Kommentert av: </p>
+            <%= @username.email %>
 
-    <%= c.text %>
-    <%= c.created_at %> </br>
-    <p>Kommentert av: </p>
-    <%= @username.email %>
-
-<% end %> </br>
-
+        <% end %> 
+    <% else %>
+    <%= @comments %>
+    <% end %> </br>
 <%= link_to 'Tilbake', '/notat' %>
