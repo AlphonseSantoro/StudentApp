@@ -1,4 +1,4 @@
-class Comment < ActiveRecord::Base
+class Comment < ApplicationRecord
     belongs_to :upload, dependent: :destroy
     has_one :user
 

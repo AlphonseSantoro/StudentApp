@@ -1,4 +1,4 @@
-class Upload < ActiveRecord::Base
+class Upload < ApplicationRecord
     belongs_to :binary, dependent: :destroy
     has_many :comments
 

@@ -1,7 +1,7 @@
 class MainController < UsersController
   
   def hovedside
-    @notat = Upload.all
+    @notat = Upload.order(id: :desc)
   end
 
   def profil

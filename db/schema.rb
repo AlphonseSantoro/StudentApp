@@ -1,4 +1,3 @@
-# encoding: UTF-8
 # This file is auto-generated from the current state of the database. Instead
 # of editing this file, please use the migrations feature of Active Record to
 # incrementally modify your database, and then regenerate this schema definition.
@@ -13,41 +12,39 @@
 
 ActiveRecord::Schema.define(version: 20180308172119) do
 
-  create_table "binaries", force: :cascade do |t|
-    t.binary   "data",       limit: 4294967295
-    t.datetime "created_at",                    null: false
-    t.datetime "updated_at",                    null: false
+  create_table "binaries", id: :integer, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
+    t.binary "data", limit: 4294967295
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
-  create_table "comments", force: :cascade do |t|
-    t.binary   "text",       limit: 65535
-    t.integer  "upload_id",  limit: 4
-    t.integer  "user_id",    limit: 4
-    t.datetime "created_at",               null: false
-    t.datetime "updated_at",               null: false
+  create_table "comments", id: :integer, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
+    t.binary "text"
+    t.integer "upload_id"
+    t.integer "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "fk_rails_03de2dc08c"
   end
 
-  add_index "comments", ["user_id"], name: "fk_rails_03de2dc08c", using: :btree
-
-  create_table "uploads", force: :cascade do |t|
-    t.string   "filename",    limit: 255
-    t.string   "filetype",    limit: 255
-    t.integer  "size",        limit: 4
-    t.binary   "data",        limit: 4294967295
-    t.integer  "user_id",     limit: 4
-    t.datetime "created_at",                     null: false
-    t.datetime "updated_at",                     null: false
-    t.string   "description", limit: 255
+  create_table "uploads", id: :integer, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
+    t.string "filename"
+    t.string "filetype"
+    t.integer "size"
+    t.binary "data", limit: 4294967295
+    t.integer "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "description"
+    t.index ["user_id"], name: "fk_rails_15d41e668d"
   end
 
-  add_index "uploads", ["user_id"], name: "fk_rails_15d41e668d", using: :btree
-
-  create_table "users", force: :cascade do |t|
-    t.string   "email",      limit: 255
-    t.string   "password",   limit: 255
-    t.string   "salt",       limit: 255
-    t.datetime "created_at",             null: false
-    t.datetime "updated_at",             null: false
+  create_table "users", id: :integer, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
+    t.string "email"
+    t.string "password"
+    t.string "salt"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   add_foreign_key "comments", "users"

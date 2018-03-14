@@ -1,4 +1,4 @@
-class AddCommentToUser < ActiveRecord::Migration
+class AddCommentToUser < ActiveRecord::Migration[5.1]
   def change
     add_foreign_key :comments, :users
   end
