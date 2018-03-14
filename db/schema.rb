@@ -12,12 +12,6 @@
 
 ActiveRecord::Schema.define(version: 20180308172119) do
 
-  create_table "binaries", id: :integer, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
-    t.binary "data", limit: 4294967295
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
   create_table "comments", id: :integer, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
     t.binary "text"
     t.integer "upload_id"
