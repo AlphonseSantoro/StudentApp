@@ -1,6 +1,9 @@
 class MainController < UsersController
   
   def hovedside
+    unless session[:signedin]
+      redirect_to '/login'
+    end
     @notat = Upload.order(id: :desc)
   end
 
@@ -48,10 +51,10 @@ class MainController < UsersController
         session[:id] = @user[:id]
         redirect_to '/hovedside'
       else
-        redirect_to '/login', notice: 'Feil passord'
+        redirect_to '/login', notice: 'Feil brukernavn eller passord'
       end
     else
-      redirect_to '/login', notice: "Fant ingen bruker med email: #{ @email }"
+      redirect_to '/login', notice: "Feil brukernavn eller passord"
     end    
   end
 
