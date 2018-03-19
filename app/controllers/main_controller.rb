@@ -28,7 +28,7 @@ class MainController < UsersController
     if @firstComment != nil
       @username = User.find(@firstComment[:user_id])
     else
-      @comments= "Ingen kommentarer"
+      @comments = "Ingen kommentarer"
     end
   end
 

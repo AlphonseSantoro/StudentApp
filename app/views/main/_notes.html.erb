@@ -1,6 +1,6 @@
 <% @notat.each do |t| %>
     <div class="post-preview">
-            <a href="post.html">
+            <a href= <%= document_path(t) %> >
               <h2 class="post-title">
                 <%= t.filename %>
               </h2>

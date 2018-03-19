@@ -7,6 +7,7 @@ class Upload < ApplicationRecord
         puts params
         @binary = params[:upload][:file_data]
         file = params[:upload][:file_data].read
+        #file = params[:upload][:file_data]
         @filename = @binary.original_filename
         @filetype = @binary.content_type
         @size = @binary.size
