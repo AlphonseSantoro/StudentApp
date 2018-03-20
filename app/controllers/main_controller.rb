@@ -1,9 +1,7 @@
 class MainController < UsersController
+  before_action :is_signedin, except: [:login, :signin]
   
   def hovedside
-    unless session[:signedin]
-      redirect_to '/login'
-    end
     @notat = Upload.order(id: :desc)
   end
 
@@ -33,6 +31,7 @@ class MainController < UsersController
   end
   
   def signin
+    reset_session
     if User.sign_in(params)
       session[:signedin] = true
       session[:id] = User.user_id(params[:signin][:email])
@@ -49,5 +48,11 @@ class MainController < UsersController
 
   def self.session_id
     session[:id]
+  end
+
+  def is_signedin
+    unless session[:signedin]
+      redirect_to '/login'
+    end
   end
 end
