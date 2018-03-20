@@ -3,6 +3,7 @@ class User < ApplicationRecord
     validates_presence_of :password
     has_many :uploads
     has_many :comments
+    scope :user_id, -> (email) {select("id").where(email: email)}
 
     def self.new_user(user_params)
         password = user_params[:password]
@@ -10,7 +11,7 @@ class User < ApplicationRecord
         email = user_params[:email]
         salt = SecureRandom.hex
         password_hash = hash_password(password, salt)
-         @user = self.create(
+         user = self.create(
             email: email,
             password: password_hash,
             salt: salt
@@ -30,5 +31,12 @@ class User < ApplicationRecord
         else
             false
         end
+    end
+
+    def self.sign_in(params)
+        email = params[:signin][:email]
+        password = params[:signin][:password]
+        user = User.where(email: email).first
+        validate_password(user[:password], hash_password(password, user[:salt]))
     end
 end

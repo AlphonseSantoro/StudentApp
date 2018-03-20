@@ -31,31 +31,15 @@ class MainController < UsersController
       @comments = "Ingen kommentarer"
     end
   end
-
-  def image
-    @file = Binary.find(@document[:binary_id])
-    @data = @file[:data]
-  end
-
+  
   def signin
-    @email = params[:signin][:email]
-    @password = params[:signin][:password]
-    @user = User.where(email: @email).first
-    if @user != nil
-      @salt = @user[:salt]
-      @password_hash = @user[:password] 
-      @password = User.hash_password(@password, @salt)
-      validate = User.validate_password(@password_hash, @password)
-      if validate
-        session[:signedin] = true
-        session[:id] = @user[:id]
-        redirect_to '/hovedside'
+    if User.sign_in(params)
+      session[:signedin] = true
+      session[:id] = User.user_id(params[:signin][:email])
+      redirect_to '/hovedside'
       else
         redirect_to '/login', notice: 'Feil brukernavn eller passord'
-      end
-    else
-      redirect_to '/login', notice: "Feil brukernavn eller passord"
-    end    
+      end    
   end
 
   def logout
