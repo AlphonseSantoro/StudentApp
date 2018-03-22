@@ -1,22 +1,19 @@
-<h1>Document:</h1>
-
-<%= @document[:data]  %>
-
-<!-- <%= @document[:data] %> -->
+<div class="post-preview    ">
+    <h1 class="post-title">
+        <%= document(params)[:filename] %> </br>
+    </h1>
+    <p class="post-meta">
+    <%= document(params)[:description] %>
+    </p>
+</div>
 
 <%= render '/comments/form' %>
 
 <p>Comments:</p>
-    <% if @firstComment != nil%>
-        <% @comments.each do |c| %>
 
-            <%= c.text %>
-            <%= c.created_at %> </br>
-            <p>Kommentert av: </p>
-            <%= @username.email %>
-
-        <% end %> 
-    <% else %>
-    <%= @comments %>
-    <% end %> </br>
-<%= link_to 'Tilbake', '/notat' %>
+<%= render "/comments/comment" %>
+         
+    <Button class="btn">
+        <%= link_to 'Tilbake', '/notat' %>
+    </Button>
+</div>

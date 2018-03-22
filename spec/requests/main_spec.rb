@@ -14,5 +14,4 @@ RSpec.describe "sign in and out", type: :request do
     get '/hovedside'
     expect(response).to redirect_to '/login'
   end
-
 end

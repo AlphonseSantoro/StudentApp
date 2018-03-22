@@ -1,18 +1,29 @@
+<% id = 0 %>
 <% @notat.each do |t| %>
-    <div class="post-preview">
-            <a href= <%= document_path(t) %> >
-              <h2 class="post-title">
-                <%= t.filename %>
-              </h2>
-              <h3 class="post-subtitle">
-                <%= t.description %>
-              </h3>
-            </a>
-            <p class="post-meta">Posted by
-              <a href="#"><%= user(t.user_id).email %></a>
-              on <%= note(t.id).created_at %></p>
-          </div>
-          <hr>
+      <div class="post-preview">
+              <a href= <%= document_path(t) %> >
+                <h2 class="post-title">
+                  <%= t.filename %>
+                </h2>
+                <h3 class="post-subtitle">
+                  <%= t.description %>
+                </h3>
+              </a>
+              <p class="post-meta">Posted by
+                <a href="#"><%= user(t.user_id).email %></a>
+                <%= time_ago_in_words(note(t.id).created_at) %> ago</p>
+                
+                <Button class="btn vcenter" data-toggle="collapse" data-target="#comment<%=id%>">Show comments</Button>
+                </br>
+                <div id="comment<%=id%>" class="collapse col-md-12"  aria-expanded="false">
+                </br>
+                  <% setParams(t.id) %>
+                  <%= render :partial => "comments/comment" %>
+                </div>
+                
+      </div>
+      </br>
+  <% id = id+1 %>
 <% end %>
           <!-- Pager -->
           <div class="clearfix">

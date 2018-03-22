@@ -1,0 +1,15 @@
+<div class="post-preview">
+<% showComments(params) %>
+    <% if @firstComment != nil%>
+        <% @comments.each do |c| %>
+        <div class="post-preview">
+            <%= c.text %><hr>
+            <p class="post-meta">Kommentert av:
+            <%= user(c.user_id).email %>
+            <%= time_ago_in_words(c.created_at) %> ago</p></br>
+            </div>
+        <% end %>
+    <% else %>
+        <%= @comments %></br>
+        </div>    
+    <% end %>

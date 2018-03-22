@@ -8,14 +8,18 @@ class User < ApplicationRecord
     def self.new_user(user_params)
         password = user_params[:password]
         confirm = user_params[:confirm_password]
-        email = user_params[:email]
-        salt = SecureRandom.hex
-        password_hash = hash_password(password, salt)
-         user = self.create(
-            email: email,
-            password: password_hash,
-            salt: salt
-            )
+        if validate_password(password, confirm)
+            email = user_params[:email]
+            salt = SecureRandom.hex
+            password_hash = hash_password(password, salt)
+            user = self.create(
+                email: email,
+                password: password_hash,
+                salt: salt
+                )
+        else
+            User.new
+        end
     end
 
     def self.hash_password(password, salt)

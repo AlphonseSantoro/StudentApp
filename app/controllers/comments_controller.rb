@@ -26,7 +26,7 @@ class CommentsController < ApplicationController
   def create
     @comment = Comment.new_comment(comment_params)
 
-    redirect_to (:back)
+    redirect_back(fallback_location: root_path)
   end
 
   # PATCH/PUT /comments/1

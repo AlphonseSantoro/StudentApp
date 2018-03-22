@@ -10,7 +10,13 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180308172119) do
+ActiveRecord::Schema.define(version: 20180321150119) do
+
+  create_table "binaries", id: :integer, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
+    t.binary "data", limit: 4294967295
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "comments", id: :integer, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
     t.binary "text"
@@ -25,11 +31,11 @@ ActiveRecord::Schema.define(version: 20180308172119) do
     t.string "filename"
     t.string "filetype"
     t.integer "size"
-    t.binary "data", limit: 4294967295
     t.integer "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "description"
+    t.string "path"
     t.index ["user_id"], name: "fk_rails_15d41e668d"
   end
 

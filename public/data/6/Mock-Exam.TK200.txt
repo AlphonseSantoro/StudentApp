@@ -1,0 +1,32 @@
+Question:
+1.
+the answer is B <- Correct
+
+2.
+the answer is D <- Correct
+
+3. 
+the answer is B <- Correct
+
+4.
+the answer is C <- Correct
+
+5.
+the answer is B <- Correct
+
+6.
+the answer is A <- Correct 
+
+7.
+you can redirect a code to run a malicious code if you dont have a check on a buffer/array and it will overwrite the value of the buffer.
+
+Lesson 03
+
+
+8.
+RSA is used to agree on a secret to encrypt he data and you need to share the secret. you will use a public/private key infrastructure. RSA is very slow and AES is fast. AES is also secure. Before AES you need to share a secret so you use RSA when you need to communicate with a partner and share the secret with RSA and once the key is shared and you start to use AES that is smarter and faster. 
+
+RSA - can make the key but is slow
+AES - can use the key and is fast
+
+Lesson 02

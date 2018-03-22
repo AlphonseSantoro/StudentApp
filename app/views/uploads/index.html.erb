@@ -8,7 +8,7 @@
       <th>Filename</th>
       <th>FileType</th>
       <th>Size</th>
-      <th>Binary</th>
+      <th>Path</th>
       <th>User</th>
       <th colspan="3"></th>
     </tr>
@@ -20,7 +20,7 @@
         <td><%= upload.filename %></td>
         <td><%= upload.filetype %></td>
         <td><%= upload.size %></td>
-        <td><%= upload.data %></td>
+        <td><%= upload.path %></td>
         <td><%= upload.user_id %></td>
         <td><%= link_to 'Show', upload %></td>
         <td><%= link_to 'Edit', edit_upload_path(upload) %></td>

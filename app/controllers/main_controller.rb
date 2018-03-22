@@ -19,22 +19,14 @@ class MainController < UsersController
   end
 
   def document
-    @comment = Comment.new
-    @document = Upload.find(params[:format])
-    @comments = Comment.where(upload_id: params[:format])
-    @firstComment = Comment.where(upload_id: params[:format]).first
-    if @firstComment != nil
-      @username = User.find(@firstComment[:user_id])
-    else
-      @comments = "Ingen kommentarer"
-    end
+    
   end
   
   def signin
     reset_session
     if User.sign_in(params)
       session[:signedin] = true
-      session[:id] = User.user_id(params[:signin][:email])
+      session[:id] = User.user_id(params[:signin][:email]).first.id
       redirect_to '/hovedside'
       else
         redirect_to '/login', notice: 'Feil brukernavn eller passord'
